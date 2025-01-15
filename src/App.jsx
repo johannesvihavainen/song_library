@@ -8,6 +8,11 @@ import ResetSearchBarInput from './ResetSearchBarInput';
 import PhotoOfJohannes from './assets/photos/photo_of_johannes.png';
 import InstagramLogo from './assets/logos/instagram_logo.png';
 import HandleContactInfo from './HandleContactInfo';
+import EmailLogo from './assets/logos/email_logo.png';
+import SongCover from './assets/photos/song_cover.png';
+import loveHurts from './assets/audio/love-hurts.wav';
+import AudioPlayer from './AudioPlayer';
+
 
 function App() {
   const [activeSection, setActiveSection] = useState('about-me');
@@ -47,12 +52,31 @@ function App() {
       )}
 
       {activeSection === 'song-library' && (
+        <div className="library-container">
+          <div className="search-bar">
+            <SearchFunctionality />
+            <ResetSearchBarInput />
+            <input className="search-box" type="text" id="myInput" placeholder="Search" />
+          </div>
 
-        <div class="search-bar">
-          <SearchFunctionality />
-          <ResetSearchBarInput />
-          <input className="search-box" type="text" id="myInput" placeholder="Search" />
+          <p className='all-tracks'>All Tracks</p>
+
+          <div className="song-container">
+            {/* <img className='song-cover' src={SongCover} alt="" /> */}
+            <div className="song-content">
+              <div className="song-description">
+                <p className='song-title'>Love Hurts</p>
+                <p className='song-creator'>Johannes Vihavainen</p>
+
+                <AudioPlayer />
+                {/* <audio controls>
+                  <source src={loveHurts} type="audio/wav" />
+                </audio> */}
+              </div>
+            </div>
+          </div>
         </div>
+
 
       )}
 

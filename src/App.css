@@ -43,7 +43,7 @@ body {
 .introduction {
   margin: 0;
   padding: 0;
-  margin-top: 45px;
+  margin-top: 25px;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -86,18 +86,38 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  background-color: #232425;
+  color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.more-info h2 {
+  color: #FFF;
+  padding: 5px;
+  background-color: #00DA33;
 }
 
 /* contact info */
 .contact-section {
-  margin-top: 45px;
   padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 15px;
 }
 
 .instagram-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  background-color: #00C8FA;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.email-section {
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -112,4 +132,69 @@ body {
   width: 70px;
   background-color: #232425;
   padding: 10px;
+}
+
+.email-logo {
+  width: 70px;
+  background-color: #232425;
+  padding: 10px;
+}
+
+/* music-library section */
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.search-bar input {
+  height: 30px;
+  border: none;
+  background-color: #232425;
+  border-radius: 12px;
+  padding: 10px;
+  width: 300px;
+}
+
+.search-bar input::placeholder {
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.all-tracks {
+  font-size: 2rem;
+  padding-left: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* song container */
+.song-container {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  justify-content: center;
+}
+
+.song-description {
+  background-color: #00C8FA;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+audio {
+  margin-top: 10px;
+}
+
+
+.song-cover {
+  width: 100px;
+  height: 100px;
+}
+
+.song-title {
+  font-weight: bold;
 }
