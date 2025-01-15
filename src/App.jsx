@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 import SearchFunctionality from './SearchFunctionality';
 import ResetSearchBarInput from './ResetSearchBarInput';
 import PhotoOfJohannes from './assets/photos/photo_of_johannes.png';
+import InstagramLogo from './assets/logos/instagram_logo.png';
+import HandleContactInfo from './HandleContactInfo';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about-me');
@@ -36,7 +38,9 @@ function App() {
             <p>I have been passionate about music since a young age, but when I was 16, a friend introduced me to creating music using a DAW (Digital Audio Workstation), which is software for producing music. Ever since then, making music has been my coping mechanism for navigating emotions and life’s challenges. Storytelling through music has helped me immensely, as I am a big dreamer. Music allows me to dream and escape into those dreams, where I can create a new world for myself.</p>
           </div>
 
-          <h3>How can you get a hold of me?</h3>
+          {/* renders the contact info section with images that link to specific websites */}
+          <HandleContactInfo />
+
         </div>
 
 
