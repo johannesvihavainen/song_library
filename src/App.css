@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  /* Adjust weight as needed */
+}
+
+.navbar {
+  background-color: #00C8FA;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  height: 45px;
+  text-align: center;
+  gap: 0px;
+}
+
+.navbar ul li {
+  background-color: #232425;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+  color: #FFF;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+}
+
+.navbar ul li:hover {
+  background-color: #00C8FA;
+}
+
+.introduction {
+  margin: 0;
+  padding: 0;
+  margin-top: 45px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introduction-shadow {
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.photo-of-johannes {
+  width: 160px;
+}
+
+.introduction-hero {
+  background-color: #232425;
+  font-size: 0.7rem;
+  color: #FFF;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.introduction-hero h1 {
+  text-wrap: nowrap;
+  text-transform: uppercase;
+}
+
+.introduction-hero p:first-of-type {
+  color: #00C8FA;
+}
+
+.more-info {
+  margin-top: 45px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

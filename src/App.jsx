@@ -1,0 +1,61 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import Navbar from './Navbar';
+import SearchFunctionality from './SearchFunctionality';
+import ResetSearchBarInput from './ResetSearchBarInput';
+import PhotoOfJohannes from './assets/photos/photo_of_johannes.png';
+
+function App() {
+  const [activeSection, setActiveSection] = useState('about-me');
+
+  const changeSection = (section) => {
+    setActiveSection(section);
+  }
+
+  return (
+    <div>
+
+      {/* Navbar */}
+      <Navbar changeSection={changeSection} />
+
+      {activeSection === 'about-me' && (
+        <div className="introduction">
+          <div className="introduction-shadow">
+            <img className='photo-of-johannes' src={PhotoOfJohannes} alt="" />
+            <div className="introduction-hero">
+              <h1>Hi! I'm Johannes</h1>
+              <p>I'm a soon-to-be computer science student studying front-end development, including HTML, CSS, and JavaScript.</p>
+              <p>My favorite hobby is music, so I decided to create a website where I can store all of my songs without any upload limits.</p>
+            </div>
+          </div>
+
+          <div className="more-info">
+            <h2>How did I get into music?</h2>
+            <p>I have been passionate about music since a young age, but when I was 16, a friend introduced me to creating music using a DAW (Digital Audio Workstation), which is software for producing music. Ever since then, making music has been my coping mechanism for navigating emotions and life’s challenges. Storytelling through music has helped me immensely, as I am a big dreamer. Music allows me to dream and escape into those dreams, where I can create a new world for myself.</p>
+          </div>
+
+          <h3>How can you get a hold of me?</h3>
+        </div>
+
+
+      )}
+
+      {activeSection === 'song-library' && (
+
+        <div class="search-bar">
+          <SearchFunctionality />
+          <ResetSearchBarInput />
+          <input className="search-box" type="text" id="myInput" placeholder="Search" />
+        </div>
+
+      )}
+
+
+
+    </div>
+  )
+}
+
+export default App
