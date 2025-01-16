@@ -1,0 +1,85 @@
+.upload-audio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50%;
+}
+
+.upload-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #FFF;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #232425;
+}
+
+.file-upload {
+    display: inline-block;
+    background-color: #00C8FA;
+    color: white;
+    padding: 25px 20px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.song-title-input {
+    width: 250px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FFF;
+    color: #232425;
+    height: 25px;
+    border-top: 1px solid #232425;
+    font-size: 16px;
+}
+
+.song-title-input:focus {
+    color: #232425;
+    outline: none;
+    font-size: 16px;
+}
+
+.song-creator-input {
+    width: 250px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FFF;
+    color: #232425;
+    height: 25px;
+    border-top: 1px solid #232425;
+    font-size: 16px;
+}
+
+.song-creator-input:focus {
+    color: #232425;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #00DA33;
+    border: none;
+    height: 50px;
+    border-top: 1px solid #232425;
+}
+
+.audio-info {
+    color: #FFF;
+    margin-top: 20px;
+    text-align: center;
+}
+
+span {
+    color: #00C8FA;
+}

@@ -2,23 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import './AudioPlayer.css';
 import PlayLogo from './assets/logos/play_logo.png';
 import PauseButton from './assets/logos/pause_button.png';
-import AudioLogo from './assets/logos/audio_logo.png';
-import loveHurts from './assets/audio/love-hurts.wav';
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ src, title, creator, isPlaying, setIsPlaying }) => {
     const audioRef = useRef(null);
     const progressRef = useRef(null);
-    const volumeRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [volume, setVolume] = useState(1);
 
     useEffect(() => {
         if (audioRef.current) {
             const audioElement = audioRef.current;
             audioElement.addEventListener('timeupdate', updateProgress);
-            audioElement.addEventListener('loadedmetadata', () => setDuration(audioElement.duration));
+            audioElement.addEventListener('loadedmetadata', () => {
+                setDuration(audioElement.duration);
+                setCurrentTime(0);
+            });
 
             return () => {
                 audioElement.removeEventListener('timeupdate', updateProgress);
@@ -26,31 +24,38 @@ const AudioPlayer = () => {
         }
     }, []);
 
-    const togglePlayPause = () => {
-        if (audioRef.current.paused) {
+    useEffect(() => {
+        // Reset the audio player when the song changes
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.load(); // Reloads the new source
+            setCurrentTime(0);
+        }
+    }, [src]);
+
+    useEffect(() => {
+        // Play or pause the audio based on the isPlaying prop
+        if (isPlaying) {
             audioRef.current.play();
-            setIsPlaying(true);
         } else {
             audioRef.current.pause();
-            setIsPlaying(false);
         }
+    }, [isPlaying]);
+
+    const togglePlayPause = () => {
+        setIsPlaying(prevState => !prevState); // Toggle play/pause from parent
     };
 
     const updateProgress = () => {
         setCurrentTime(audioRef.current.currentTime);
-        const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
-        if (progressRef.current) progressRef.current.value = progress;
+        if (progressRef.current) {
+            progressRef.current.value = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+        }
     };
 
     const handleProgressChange = (e) => {
         const value = e.target.value;
         audioRef.current.currentTime = (value / 100) * audioRef.current.duration;
-    };
-
-    const handleVolumeChange = (e) => {
-        const value = e.target.value;
-        audioRef.current.volume = value;
-        setVolume(value);
     };
 
     const formatTime = (time) => {
@@ -61,21 +66,22 @@ const AudioPlayer = () => {
 
     return (
         <div className="audio-player">
-            <audio ref={audioRef} src={loveHurts} preload="metadata"></audio>
-
+            <audio ref={audioRef} src={src} preload="metadata"></audio>
             <div className="controls">
+                {/* Song Title and Creator */}
+                <div className="song-info">
+                    <p className="song-title">{title}</p>
+                    <p className="song-creator">{creator}</p>
+                </div>
 
-
+                {/* Play/Pause and Progress */}
                 <div className="progress-and-time">
-
-                    {/* Play/Pause Button */}
                     <img
                         src={isPlaying ? PauseButton : PlayLogo}
                         alt={isPlaying ? 'Pause' : 'Play'}
                         className="play-pause-btn"
-                        onClick={togglePlayPause}
+                        onClick={togglePlayPause} // Toggle play/pause on click
                     />
-
                     <div className="time-info">
                         <span className="current-time">{formatTime(currentTime)}</span> /{' '}
                         <span className="duration">{formatTime(duration)}</span>
@@ -85,33 +91,14 @@ const AudioPlayer = () => {
                             ref={progressRef}
                             type="range"
                             className="progress"
-                            value={(currentTime / duration) * 100}
+                            value={(currentTime / duration) * 100 || 0}
                             onChange={handleProgressChange}
                             min="0"
                             max="100"
                         />
                     </div>
                 </div>
-
-                {/* <div className="volume-control-section">
-                    <img className='volume-logo' src={AudioLogo} alt="" />
-
-                    <div className="volume-control">
-                        <input
-                            ref={volumeRef}
-                            type="range"
-                            className="volume"
-                            value={volume}
-                            onChange={handleVolumeChange}
-                            min="0"
-                            max="1"
-                            step="0.01"
-                        />
-                    </div>
-                </div> */}
             </div>
-
-
         </div>
     );
 };
