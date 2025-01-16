@@ -12,6 +12,7 @@ import EmailLogo from './assets/logos/email_logo.png';
 import SongCover from './assets/photos/song_cover.png';
 import loveHurts from './assets/audio/love-hurts.wav';
 import AudioPlayer from './AudioPlayer';
+import UploadAudio from './UploadAudio';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const changeSection = (section) => {
     setActiveSection(section);
   }
+  
 
   return (
     <div>
@@ -80,8 +82,12 @@ function App() {
 
 
       )}
+      
 
+      {activeSection === 'upload' && (
+<UploadAudio />
 
+      )}
 
     </div>
   )
