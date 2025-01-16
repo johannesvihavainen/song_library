@@ -9,7 +9,11 @@ import UploadAudio from './UploadAudio';
 import AudioPlayer from './AudioPlayer';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('about-me');
+  const [activeSection, setActiveSection] = useState(() => {
+    // Retrieve the last active section from localStorage or default to 'about-me'
+    return localStorage.getItem('activeSection') || 'about-me';
+  });
+
   const [songs, setSongs] = useState([]); // State to store uploaded songs
   const [currentSong, setCurrentSong] = useState(null); // State to store the currently selected song
   const [isPlaying, setIsPlaying] = useState(false); // State to track if the audio is playing
@@ -28,6 +32,11 @@ function App() {
       localStorage.setItem('songs', JSON.stringify(songs));
     }
   }, [songs]);
+
+  // Save the active section to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('activeSection', activeSection);
+  }, [activeSection]);
 
   const changeSection = (section) => {
     setActiveSection(section);
