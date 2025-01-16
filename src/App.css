@@ -164,37 +164,52 @@ body {
 
 .all-tracks {
   font-size: 2rem;
-  padding-left: 50px;
+  padding-left: 15px;
   margin-top: 30px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* song container */
 .song-container {
   display: flex;
   flex-direction: row;
-  padding: 15px;
-  justify-content: center;
+  padding: 20px;
+  margin-top: 20px;
 }
 
+
 .song-description {
-  background-color: #00C8FA;
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  color: #FFF;
+
 }
 
-audio {
-  margin-top: 10px;
+.song-content {
+  background-color: #232425;
+  display: flex;
+  border-radius: 12px;
+  width: 100%;
 }
+
+.song-content:hover {
+  background-color: #00C8FA;
+}
+
 
 
 .song-cover {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 100%;
+  border-radius: 12px;
 }
 
 .song-title {
   font-weight: bold;
+}
+
+.song-creator {
+  color: #cccccc;
 }

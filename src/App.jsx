@@ -53,17 +53,18 @@ function App() {
 
       {activeSection === 'song-library' && (
         <div className="library-container">
+          <p className='all-tracks'>All tracks</p>
           <div className="search-bar">
             <SearchFunctionality />
             <ResetSearchBarInput />
             <input className="search-box" type="text" id="myInput" placeholder="Search" />
           </div>
 
-          <p className='all-tracks'>All Tracks</p>
+
 
           <div className="song-container">
-            {/* <img className='song-cover' src={SongCover} alt="" /> */}
             <div className="song-content">
+              <img className='song-cover' src={PhotoOfJohannes} alt="" />
               <div className="song-description">
                 <p className='song-title'>Love Hurts</p>
                 <p className='song-creator'>Johannes Vihavainen</p>
