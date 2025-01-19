@@ -11,10 +11,12 @@ const UploadAudio = ({ addSong }) => {
 
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
-        if (file) {
+        if (file && file.type.startsWith('audio/')) {
             const fileURL = URL.createObjectURL(file);
             setAudioFile(fileURL);
-            setFileName(file.name); // Store the name of the uploaded file
+            setFileName(file.name);
+        } else {
+            alert('Please upload a valid audio file.');
         }
     };
 
