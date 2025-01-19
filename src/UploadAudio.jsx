@@ -1,5 +1,5 @@
-// UploadAudio.jsx
 import React, { useState, useRef } from 'react';
+import { useDropzone } from 'react-dropzone'; // Import useDropzone from react-dropzone
 import './UploadAudio.css';
 
 const UploadAudio = ({ addSong }) => {
@@ -9,8 +9,9 @@ const UploadAudio = ({ addSong }) => {
     const [fileName, setFileName] = useState('');
     const audioRef = useRef(null);
 
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0];
+    // Handle file selection when using react-dropzone
+    const onDrop = (acceptedFiles) => {
+        const file = acceptedFiles[0];
         if (file && file.type.startsWith('audio/')) {
             const fileURL = URL.createObjectURL(file);
             setAudioFile(fileURL);
@@ -19,6 +20,12 @@ const UploadAudio = ({ addSong }) => {
             alert('Please upload a valid audio file.');
         }
     };
+
+    // Set up react-dropzone
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop,
+        accept: 'audio/*',  // Accept only audio files
+    });
 
     const handleAddSong = () => {
         if (audioFile && songTitle && songCreator) {
@@ -45,12 +52,13 @@ const UploadAudio = ({ addSong }) => {
         <div className="upload-audio">
             <div className="container" onClick={handleContainerClick}>
                 <p className="upload-title">Want to upload a song?</p>
-                <input
-                    type="file"
-                    accept="audio/*"
-                    onChange={handleFileUpload}
-                    className="file-upload"
-                />
+                
+                {/* Drag and drop area using react-dropzone */}
+                <div {...getRootProps()} className="file-dropzone">
+                    <input {...getInputProps()} />
+                    <p>Drag 'n' drop some audio files here, or click to select files</p>
+                </div>
+
                 <input
                     type="text"
                     placeholder="Song Title"

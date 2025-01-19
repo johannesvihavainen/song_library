@@ -15,6 +15,7 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.5",
     "wavesurfer.js": "^7.8.16"
   },
   "devDependencies": {
