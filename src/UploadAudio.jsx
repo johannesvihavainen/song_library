@@ -56,7 +56,7 @@ const UploadAudio = ({ addSong }) => {
                 {/* Drag and drop area using react-dropzone */}
                 <div {...getRootProps()} className="file-dropzone">
                     <input {...getInputProps()} />
-                    <p>Drag 'n' drop some audio files here, or click to select files</p>
+                    <button className='upload-btn'>Click to select audio files.</button>
                 </div>
 
                 <input
